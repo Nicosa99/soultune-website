@@ -1,0 +1,130 @@
+.st-usecases {
+    /* Variables (inherited context) */
+    --c-bg: #030305;
+    --c-text-main: #ffffff;
+    --c-text-muted: #94a3b8;
+    
+    /* Mood Colors */
+    --c-focus: #f59e0b;   /* Amber */
+    --c-sleep: #3b82f6;   /* Blue */
+    --c-meditation: #8b5cf6; /* Purple */
+    --c-commute: #10b981; /* Emerald */
+
+    position: relative;
+    padding: 2rem 0 6rem;
+    background-color: var(--c-bg);
+    color: var(--c-text-main);
+}
+
+.st-usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.st-case-card {
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.st-case-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Specific Mood Styles via Modifiers */
+.st-case--focus { --case-color: var(--c-focus); }
+.st-case--sleep { --case-color: var(--c-sleep); }
+.st-case--meditation { --case-color: var(--c-meditation); }
+.st-case--commute { --case-color: var(--c-commute); }
+
+.st-case-card:hover {
+    box-shadow: 0 15px 40px -10px rgba(var(--case-color), 0.2); /* Note: needs rgb components for generic implementation, using simplified glow here */
+    border-color: var(--case-color);
+}
+
+/* Visual Area (Top) */
+.st-case-visual {
+    height: 140px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Dynamic Glow Background based on Mood */
+.st-case-visual::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: var(--case-color);
+    filter: blur(60px);
+    opacity: 0.2;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+}
+
+.st-case-card:hover .st-case-visual::before {
+    opacity: 0.4;
+}
+
+.st-case-icon {
+    font-size: 3rem;
+    z-index: 2;
+    position: relative;
+    transform: scale(1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.st-case-card:hover .st-case-icon {
+    transform: scale(1.2);
+}
+
+/* Content Area (Bottom) */
+.st-case-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.st-case-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--case-color);
+    margin-bottom: 0.75rem;
+}
+
+.st-case-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: var(--c-text-main);
+}
+
+.st-case-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--c-text-muted);
+    margin: 0;
+}
+
+.st-case-content strong {
+    color: var(--c-text-main);
+}
+
+@media (max-width: 768px) {
+    .st-usecases-grid {
+        grid-template-columns: 1fr; /* Full width cards on mobile */
+    }
+}
