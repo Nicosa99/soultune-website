@@ -1,0 +1,222 @@
+/* ========================================
+   PRIVACY POLICY STYLES - SoulTune
+   ======================================== */
+
+/* Reusing Global Variables from global.css (implicitly available) */
+.st-legal-page {
+    background-color: var(--c-bg);
+    color: var(--c-text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Navigation --- */
+.st-legal-nav {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(3, 3, 5, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.st-legal-nav-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.st-legal-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--c-text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.st-legal-back {
+    font-size: 0.875rem;
+    color: var(--c-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.st-legal-back:hover {
+    color: var(--c-text-main);
+}
+
+/* --- Content Container --- */
+.st-legal-content {
+    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+/* Background Glow */
+.st-legal-glow {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Typography */
+.st-legal-article {
+    position: relative;
+    z-index: 1;
+}
+
+.st-legal-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.st-legal-date {
+    display: block;
+    color: var(--c-text-muted);
+    margin-bottom: 3rem;
+    font-size: 0.9rem;
+}
+
+.st-legal-article h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--c-text-main);
+}
+
+.st-legal-article h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-text-main);
+}
+
+.st-legal-article p {
+    color: var(--c-text-muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.st-legal-article ul {
+    color: var(--c-text-muted);
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.st-legal-article li {
+    margin-bottom: 0.5rem;
+}
+
+.st-legal-article a {
+    color: var(--c-primary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.st-legal-article a:hover {
+    border-color: var(--c-primary);
+}
+
+/* --- Specific Components --- */
+.info-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    margin: 25px 0;
+    color: var(--c-text-muted);
+}
+
+.info-box strong {
+    color: var(--c-text-main);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.highlight {
+    background: linear-gradient(90deg, rgba(139, 92, 246, 0.1) 0%, rgba(0, 255, 148, 0.05) 100%);
+    padding: 20px;
+    border-left: 5px solid var(--c-primary);
+    border-radius: 8px;
+    margin: 25px 0;
+    font-weight: 500;
+}
+
+.highlight strong {
+    color: var(--c-text-main);
+}
+
+.st-legal-article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95rem;
+}
+
+.st-legal-article th, 
+.st-legal-article td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid var(--glass-border);
+    color: var(--c-text-muted);
+}
+
+.st-legal-article th {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--c-text-main);
+    font-weight: 600;
+}
+
+.st-legal-article tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.icon-check { 
+    color: var(--c-accent); 
+    font-weight: bold; 
+    margin-right: 0.5rem;
+}
+
+.icon-cross { 
+    color: #F56565; 
+    font-weight: bold; 
+    margin-right: 0.5rem;
+}
+
+.st-legal-article ul li {
+    list-style: none;
+}
+
+.st-legal-article ul:not(.no-bullets) li {
+    list-style: disc;
+    margin-left: 1rem;
+}
+
+.st-legal-article ul li:has(.icon-cross),
+.st-legal-article ul li:has(.icon-check) {
+    list-style: none;
+    margin-left: 0;
+}

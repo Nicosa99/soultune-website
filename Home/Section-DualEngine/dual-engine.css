@@ -1,0 +1,236 @@
+.st-dual-engine {
+    /* Variables (inherited from global context in prod, strictly needed here for independence if viewed alone, but primarily using standard vars) */
+    --c-bg: #030305;
+    --c-text-main: #ffffff;
+    --c-text-muted: #94a3b8;
+    --c-primary: #8b5cf6;
+    --c-accent: #00ff94;
+    --c-gradient: linear-gradient(135deg, #8b5cf6 0%, #00ff94 100%);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: 20px;
+    
+    position: relative;
+    padding: 2rem 0 4rem;
+    background-color: var(--c-bg);
+    color: var(--c-text-main);
+    overflow: hidden;
+}
+
+.st-dual-engine .st-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.st-engine-visual {
+    width: 100%;
+    max-width: 900px;
+    margin: 1.5rem 0;
+    padding: 3rem;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    gap: 2rem;
+}
+
+/* Background Glow for the Visualizer */
+.st-engine-visual::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+    z-index: 0;
+}
+
+/* Sources (Left/Right) */
+.st-source {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.st-icon-glow {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: var(--c-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.st-icon-glow--accent {
+    background: rgba(0, 255, 148, 0.1);
+    border-color: rgba(0, 255, 148, 0.3);
+    color: var(--c-accent);
+    box-shadow: 0 0 20px rgba(0, 255, 148, 0.1);
+}
+
+.st-source:hover .st-icon-glow {
+    transform: scale(1.1);
+}
+
+.st-source-info h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+}
+
+.st-source-info p {
+    font-size: 0.9rem;
+    color: var(--c-text-muted);
+    margin: 0 0 1rem 0;
+}
+
+.st-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--c-primary);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.st-tag--accent {
+    background: rgba(0, 255, 148, 0.1);
+    color: var(--c-accent);
+    border-color: rgba(0, 255, 148, 0.2);
+}
+
+/* Connector Lines */
+.st-connector-line {
+    display: none; /* Handled by pseudo-elements or distinct layout for mobile/desktop */
+}
+
+/* Core Mixer (Center) */
+.st-core-mixer {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.st-core-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    animation: spin 10s linear infinite;
+}
+
+.st-core-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--c-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    z-index: 2;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Animated Flow Lines (Desktop only usually) */
+.st-source::after {
+    content: '';
+    position: absolute;
+    top: 40px; /* Center of icon */
+    height: 2px;
+    background: linear-gradient(90deg, currentColor, transparent);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.st-source--music::after {
+    left: 100%;
+    width: 100px; /* Approximate distance to center */
+    background: linear-gradient(90deg, var(--c-primary), transparent);
+}
+
+.st-source--freq::after {
+    right: 100%;
+    width: 100px;
+    background: linear-gradient(-90deg, var(--c-accent), transparent);
+}
+
+/* Description Area */
+.st-engine-description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    text-align: center;
+    max-width: 800px;
+}
+
+.st-plus {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--c-text-muted);
+}
+
+.st-desc-item h4 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.st-desc-item p {
+    font-size: 0.95rem;
+    color: var(--c-text-muted);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .st-engine-visual {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .st-source::after {
+        display: none; /* Hide horizontal lines */
+    }
+
+    .st-core-mixer {
+        transform: rotate(90deg); /* Rotate visual flow if needed */
+    }
+
+    .st-engine-description {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .st-plus {
+        display: none;
+    }
+}

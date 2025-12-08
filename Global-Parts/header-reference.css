@@ -1,0 +1,35 @@
+/* --- Navigation (Referenz für Global Header) --- */
+.st-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 100px;
+    margin-bottom: 4rem;
+}
+
+.st-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.st-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.st-nav-links a {
+    text-decoration: none;
+    color: var(--c-text-main);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: color 0.2s;
+}
+
+.st-nav-links a:hover {
+    color: var(--c-primary);
+}
