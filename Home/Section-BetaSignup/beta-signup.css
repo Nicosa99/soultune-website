@@ -1,5 +1,5 @@
 /* ========================================
-   BETA SIGNUP SECTION
+   BETA SIGNUP SECTION (ANDROID STEPS)
    ======================================== */
 
 /* --- Section Container --- */
@@ -9,7 +9,7 @@
     overflow: hidden;
     background: linear-gradient(180deg,
         var(--c-bg) 0%,
-        rgba(139, 92, 246, 0.03) 50%,
+        rgba(139, 92, 246, 0.05) 50%,
         var(--c-bg) 100%
     );
 }
@@ -65,7 +65,7 @@
 /* --- Section Header --- */
 .st-beta-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     animation: st-fade-in-up 0.8s ease-out;
 }
 
@@ -78,6 +78,8 @@
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 24px;
+    border: 1px solid rgba(0, 255, 148, 0.3);
+    color: var(--c-accent);
 }
 
 .st-dot--pulse {
@@ -85,6 +87,7 @@
     height: 8px;
     background: var(--c-accent);
     border-radius: 50%;
+    box-shadow: 0 0 10px var(--c-accent);
     animation: st-pulse 2s ease-in-out infinite;
 }
 
@@ -103,336 +106,135 @@
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.7;
+    color: var(--c-text-muted);
 }
 
-/* --- Beta Form Wrapper --- */
-.st-beta-form-wrapper {
-    max-width: 1100px;
+/* --- Launch Steps Grid --- */
+.st-launch-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
     margin: 0 auto;
     animation: st-fade-in-up 1s ease-out 0.2s backwards;
 }
 
-.st-beta-card {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 60px;
-    padding: 50px;
-    border-radius: 24px;
+/* --- Step Cards --- */
+.st-step-card {
     position: relative;
-}
-
-.st-beta-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
+    padding: 40px;
     border-radius: 24px;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(0, 255, 148, 0.3));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-}
-
-/* --- Left: Benefits --- */
-.st-beta-benefits {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    height: 100%;
+    transition: transform 0.3s var(--ease-out);
 }
 
-.st-benefits-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 16px 0;
-    background: var(--c-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.st-step-card:hover {
+    transform: translateY(-8px);
 }
 
-.st-benefits-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.st-step-card--highlight {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(0, 255, 148, 0.05));
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+}
+
+/* Header inside Card */
+.st-step-header {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.st-benefit-item {
-    display: flex;
+    justify-content: space-between;
     align-items: flex-start;
-    gap: 12px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--c-text-muted);
+    margin-bottom: 24px;
 }
 
-.st-benefit-item svg {
-    flex-shrink: 0;
-    margin-top: 2px;
-    stroke: var(--c-accent);
-}
-
-.st-benefit-item strong {
-    color: var(--c-text-main);
-    font-weight: 600;
-}
-
-/* --- Beta Stats --- */
-.st-beta-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: auto;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.st-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    text-align: center;
-}
-
-.st-stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    background: var(--c-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.st-step-number {
+    font-size: 4rem;
+    font-weight: 800;
     line-height: 1;
+    color: rgba(255, 255, 255, 0.05);
+    font-family: monospace;
 }
 
-.st-stat-label {
-    font-size: 0.85rem;
-    color: var(--c-text-muted);
-}
-
-/* --- Right: Form --- */
-.st-beta-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.st-signup-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* --- Form Elements --- */
-.st-form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.st-form-label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--c-text-main);
-}
-
-.st-form-input {
-    padding: 14px 18px;
-    border-radius: 12px;
+.st-step-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    background: var(--glass-bg);
-    color: var(--c-text-main);
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.3s var(--ease-out);
-    outline: none;
-}
-
-.st-form-input::placeholder {
-    color: rgba(148, 163, 184, 0.5);
-}
-
-.st-form-input:focus {
-    border-color: var(--c-primary);
-    background: rgba(139, 92, 246, 0.05);
-    transform: translateY(-1px);
-}
-
-.st-form-select {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 44px;
-}
-
-/* --- Checkbox --- */
-.st-form-group--checkbox {
-    margin-top: 8px;
-}
-
-.st-checkbox-wrapper {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    cursor: pointer;
-    user-select: none;
-}
-
-.st-checkbox-wrapper input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.st-checkbox-custom {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    border-radius: 6px;
-    border: 2px solid var(--glass-border);
-    background: var(--glass-bg);
-    flex-shrink: 0;
-    transition: all 0.3s var(--ease-out);
-}
-
-.st-checkbox-wrapper input[type="checkbox"]:checked + .st-checkbox-custom {
-    background: var(--c-primary);
-    border-color: var(--c-primary);
-}
-
-.st-checkbox-wrapper input[type="checkbox"]:checked + .st-checkbox-custom::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 6px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-.st-checkbox-label {
-    font-size: 0.9rem;
-    color: var(--c-text-muted);
-    line-height: 1.5;
-}
-
-/* --- Submit Button --- */
-.st-btn--full {
-    width: 100%;
-    justify-content: center;
-    margin-top: 8px;
-}
-
-.st-btn--primary {
-    position: relative;
-    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 32px;
-    border-radius: 12px;
-    border: none;
+    justify-content: center;
+    color: var(--c-primary);
+}
+
+.st-step-card--highlight .st-step-icon {
     background: var(--c-gradient);
-    color: white;
-    font-size: 1.05rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.3s var(--ease-out);
-    overflow: hidden;
+    color: var(--c-bg);
+    border: none;
 }
 
-.st-btn--primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4);
+/* Content inside Card */
+.st-step-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 16px 0;
 }
 
-.st-btn--primary:active {
-    transform: translateY(0);
+.st-step-desc {
+    font-size: 1rem;
+    color: var(--c-text-muted);
+    line-height: 1.6;
+    flex-grow: 1; /* Pushes button to bottom */
+    margin-bottom: 32px;
 }
 
-.st-btn--primary.is-loading .st-btn-text,
-.st-btn--primary.is-loading .st-btn-icon {
-    opacity: 0;
-}
-
-.st-btn--primary.is-loading .st-btn-loader {
-    opacity: 1;
-}
-
-.st-btn-loader {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top-color: white;
-    border-radius: 50%;
-    opacity: 0;
-    animation: st-spin 0.8s linear infinite;
-    transition: opacity 0.3s;
-}
-
-@keyframes st-spin {
-    to { transform: rotate(360deg); }
-}
-
-/* --- Form Messages --- */
-.st-form-message {
-    display: none;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 16px;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    margin-top: 8px;
-}
-
-.st-form-message.is-visible {
-    display: flex;
-}
-
-.st-form-message--success {
-    background: rgba(0, 255, 148, 0.1);
-    border: 1px solid rgba(0, 255, 148, 0.3);
+.st-step-desc strong {
     color: var(--c-accent);
 }
 
-.st-form-message--error {
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    color: #ef4444;
-}
-
-.st-form-message svg {
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-/* --- Trust Indicators --- */
-.st-beta-trust {
-    display: flex;
+/* Buttons inside Card */
+.st-btn--full {
+    width: 100%;
     justify-content: center;
-    gap: 32px;
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.st-trust-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
+.st-btn--secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--c-text-main);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.st-btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Footer Area --- */
+.st-beta-footer {
+    text-align: center;
+    margin-top: 60px;
     color: var(--c-text-muted);
+    font-size: 1rem;
 }
 
-.st-trust-item svg {
-    stroke: var(--c-accent);
-    opacity: 0.7;
+.st-link-accent {
+    color: var(--c-primary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.st-link-accent:hover {
+    color: var(--c-accent);
+    border-bottom-color: var(--c-accent);
+}
+
+.st-ios-note {
+    background: var(--glass-bg);
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: 1px solid var(--glass-border);
 }
 
 /* --- Animations --- */
@@ -448,40 +250,19 @@
 }
 
 /* --- Responsive --- */
-@media (max-width: 968px) {
-    .st-beta-card {
+@media (max-width: 1024px) {
+    .st-launch-steps {
         grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 40px 30px;
+        max-width: 600px;
+        gap: 24px;
     }
 
-    .st-beta-stats {
-        grid-template-columns: repeat(2, 1fr);
-        padding-top: 20px;
+    .st-step-card {
+        padding: 30px;
+        min-height: auto;
     }
-}
-
-@media (max-width: 640px) {
-    .st-beta-signup {
-        padding: 80px 0;
-    }
-
-    .st-beta-header {
-        margin-bottom: 40px;
-    }
-
-    .st-beta-card {
-        padding: 30px 20px;
-        gap: 30px;
-    }
-
-    .st-beta-trust {
-        flex-direction: column;
-        gap: 16px;
-        align-items: center;
-    }
-
-    .st-stat-number {
-        font-size: 2rem;
+    
+    .st-step-desc {
+        margin-bottom: 24px;
     }
 }
