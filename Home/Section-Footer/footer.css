@@ -140,6 +140,20 @@
     box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
 }
 
+.st-ft-btn--secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--ft-text-main);
+    backdrop-filter: blur(10px);
+}
+
+.st-ft-btn--secondary:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 255, 148, 0.15);
+}
+
 .st-ft-btn svg {
     flex-shrink: 0;
 }
